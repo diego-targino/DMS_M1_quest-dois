@@ -1,11 +1,17 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StatusBar } from "expo-status-bar";
+import { useState } from "react";
+import { Pressable, StyleSheet, Text, View } from "react-native";
 
 export default function App() {
+  const [pressCount, setPressCount] = useState(0);
+
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
       <StatusBar style="auto" />
+      <Text>You've pressed the button: {pressCount} time(s)</Text>
+      <Pressable onPress={() => setPressCount(pressCount + 1)}>
+        <Text style={styles.pressableText}>Press me </Text>
+      </Pressable>
     </View>
   );
 }
@@ -13,8 +19,10 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    paddingTop: 45,
+    alignItems: "center",
+  },
+  pressableText: {
+    color: "rgb(37, 150, 190)",
   },
 });
